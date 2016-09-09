@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Variables</title>
+</head>
+<body>
+<form>
+<p id='Q1'>What is your name?</p>
+<input name='yourName' type='text'>
+<p id='Q2'>What's your birthday?</p>
+<!-- Year: <input type="number" min="1916" max="2016" step="1" 
+value="1990" name="year"><br>
+Month:<input type="month" name="month"><br> -->
+Date:<input type="date" name="DOB"><br>
+<input type="button" name="submit" value="Confirm"
+ onclick = "getResponse()">
+</form>
+<p id='response'></p>
+</body>
+<script>
+function getResponse(){
+	var yourName = document.getElementsByName("yourName")[0].value;
+	var yourDOB =  new Date(document.getElementsByName("DOB")[0].value);
+	var yourAge;
+	var today = new Date();
+ 	if((yourDOB.getMonth() == today.getMonth()&&yourDOB.getDate()>today.getDate())
+			|| (yourDOB.getMonth()> today.getMonth()))
+		{
+		yourAge = today.getYear - yourDOB.getYear-1;
+		}
+	else
+		yourAge = today.getYear - yourDOB.getYear;
+	document.getElementById("response").innerHTML="Hello, "+ yourName +". You are "+ yourAge +" years old.";
+ 
+//	document.getElementById("response").innerHTML=yourDOB.getMonth();
+}
+
+</script>
+</html>

@@ -5,45 +5,52 @@
 <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-<h6>Let's play the rock, paper, scissors game!</h6>
+<h3>Let's play the rock, paper, scissors game!</h3>
 <p>Please select your option</p>
 <p class = "alert" id = 'alert'><p>
-<form>
-
-<button type ='button' value = "Play" onclick = 'Play()'>play</button>
+<form> 
+<input type = "radio" value = "rock" name ="opt">
+<img src = "./resource/rock.png" alt = "Rock" height = 100 width = 100>
+<input type = "radio" value = "paper" name ="opt">
+<img src = "./resource/paper.png" alt = "Paper" height = 100 width = 100>
+<input type = "radio" value = "scissors" name ="opt">
+<img src = "./resource/scissors.png" alt = "scissors" height = 100 width = 100>
+<br>
+<button type ='button' value = "Play" onclick = 'Play()'>Play</button>
 </form>
-<h6 id='result'></h6>
+<p>Computer's Choice is </p>
+<img id ="CC" src = "./resource/1.JPG" alt = "computer choice" height = 100 width = 100>
+<h4 id='result'>Result? </h4>
 </body>
 <script>
 function Play(){
 	//check if the user select any option
-	if(  ==undefined)
-	{
-		document.getElementById('alert').innerHTML = "Please select one option";
-	}
-	else
+
+
 	{
 		
 		document.getElementById('alert').innerHTML = "";
 		//call computerOption function to get computer option
 		var cOption = computerOption();
-		var uOption = ///////////
+		//update computer option image
+		document.getElementById("CC").src = "./resource/"+cOption+".png";
+		var uOption = getUserOpt();
 		var result = document.getElementById('result');
 		if(cOption == uOption)
 			result.innerHTML = "Tied.";
-		else if ((uOption =='scissors'&&cOption = 'paper')
-				||(uOption =='paper'&&cOption = 'rock')
-				||(uOption =='rock'&&cOption = 'scissors'))
+		else if ((uOption =='scissors' && cOption == 'paper')
+				||(uOption =='paper' && cOption == 'rock')
+				||(uOption =='rock'&&cOption == 'scissors'))
 				result.innerHTML = "You win!!";
 		else
 		{
 			result.innerHTML = "You Lose.";
-	}
+	} 
 }
-
+}
 //function to generate computer option
 function computerOption(){
-	var option_number = Math.floor(Math.random*3);//computer randomly generate 0,1,or 2
+	var option_number = Math.floor(Math.random() * 3);//computer randomly generate 0,1,or 2
 	switch(option_number){
 		case 0:
 			return "rock";
@@ -52,6 +59,19 @@ function computerOption(){
 		case 2:
 			return "scissors";
 	}
+}
+//function to get user's option
+function getUserOpt()
+{
+ 	var tempOpts = document.getElementsByName("opt");
+	for(var i =0; i< tempOpts.length; i++){
+ 		if(tempOpts[i].checked)
+ 			{
+ 			console.log(tempOpts[i].value);//debug purpose
+ 			return tempOpts[i].value;
+ 			}
+ 	}
+
 }
 </script>
 </html>

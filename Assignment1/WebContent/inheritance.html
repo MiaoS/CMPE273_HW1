@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculate Area and Perimeter of Shapes</title>
+</head>
+<body>
+<p id = "output"><p>
+<script>
+	function Shape(name){
+		this.area;
+		this.perimter;
+		this.name = "shape";
+	};
+	Shape.prototype.area_output = function(){
+		return "Area of "+this.name+" is "+ this.area;
+	}
+	
+	Shape.prototype.perimeter_output = function(){
+		return "Perimeter of "+this.name+" is "+ this.perimeter;
+	}
+	//Circle inheritant from Shape
+	Circle.prototype = new Shape();
+	Circle.prototype.constructor = Circle;
+	function Circle(radius){
+		var r = radius;
+		this.area = radius*radius*3.14;
+		this.perimeter = 6.28*radius;
+		this.name = "circle";
+	}
+	
+	
+	//Square inheritant from Shape
+	Square.prototype = new Shape();
+	Square.prototype.constructor = Square;
+	function Square(edge){
+		var e = edge;
+		this.area = edge*edge;
+		this.perimeter = 4*edge;
+		this.name = "square";
+	}
+	
+	//check the inheritance
+	var c5 = new Circle(5);//create a circle with radius =5
+	var s4 = new Square(4);//create a square with edge = 4
+	document.getElementById("output").innerHTML = "A circle with radius length= 5 has been created.<br>"+ c5.area_output()
+													+"<br>"+c5.perimeter_output()+"<br><br><br>"+
+													"A square with edge length= 4 has been created.<br>"+ s4.area_output()
+													+"<br>"+s4.perimeter_output();
+</script>
+</body>
+</html>

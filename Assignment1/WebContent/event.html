@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Click Event to Change a Image</title>
+</head>
+<body>
+<h2 id = "text">Old Image</h2>
+<img src = "./resource/1.JPG" id='pic' alt="image" 
+	height ="100" width="100" onclick="changeImage()">
+</body>
+<script>
+function changeImage(){
+	//update text after clicking the image
+	document.getElementById("text").innerHTML= "New Image";
+	//update image after clicking the image
+	document.getElementById("pic").src="./resource/2.JPG";
+}
+</script>
+</html>

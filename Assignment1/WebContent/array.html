@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Expense List</title>
+<script>
+//declare array to store the prices and use the item names as an index
+var ItemNameList =[];//this is an array of string
+var ItemPriceList = {};
+</script>
+</head>
+<body>
+<h1>My Expense List</h1>
+<p id ='alert'>Please enter the things you buy and their prices.<br>
+We will calculate the sum to you.<p>
+
+Item Name: <input type ="text" name ="itemName">
+Item Price: <input type ="text" name ="itemPrice">
+<button onclick = "show()" name = "addBTN" value="add to list">add to list</button>
+
+<div id='list'>
+<h3>My List</h3>
+<div id ='title' class ='line'><div class="item">Item Name</div><div class='item'>Item Price</div></div><br>
+<div id ='table' class='table'>
+The list is empty. Please add some items.
+</div>
+
+</div>
+<div id="summary">
+<div id = 'foot' class = 'line'><div class ="item">Total Expense</div><div class ="item" id="sum">0</div></div>
+</div>
+</body>
+<script>
+
+function show(){
+	if(document.getElementsByName('itemName')[0].value== undefined ||document.getElementsByName('itemName')[0].value==""
+	||document.getElementsByName('itemPrice')[0].value== undefined ||document.getElementsByName('itemPrice')[0].value=="")
+	{
+		document.getElementById('alert').innerHTML = "<span>Item name or price is missing.</span>Please enter the things you buy and their prices.<br>We will calculate the sum to you.";
+		
+	}
+	else{
+	document.getElementById('alert').innerHTML = "Please enter the things you buy and their prices.<br>We will calculate the sum to you.";
+	//colect the item name and price and put it into array and object
+	ItemNameList[ItemNameList.length] = document.getElementsByName('itemName')[0].value;
+	console.log(document.getElementsByName('itemPrice')[0].value);
+	ItemPriceList[document.getElementsByName('itemName')[0].value] = document.getElementsByName('itemPrice')[0].value;
+	
+	//show the item in the item list
+	if(ItemNameList.length == 1)//remove the space holder
+		document.getElementById('table').innerHTML = "";
+	
+	document.getElementById('table').innerHTML +="<div class ='line'><div class=\"item\">"
+													+ItemNameList[ItemNameList.length-1]
+													+"</div><div class=\'item\'>"
+													+ItemPriceList[ItemNameList[ItemNameList.length-1]]
+													+"</div></div><br>";
+	//clear the value in text bar
+	document.getElementsByName('itemName')[0].value = '';
+	document.getElementsByName('itemPrice')[0].value = '';
+	
+	
+	//add up the price
+	var sum=0;
+	for( var i = 0; i < ItemNameList.length; i++){
+		sum += Number(ItemPriceList[ItemNameList[i]]);
+	}
+	document.getElementById('sum').innerHTML =sum;
+	}
+	
+} 
+</script>
+
+
+<style>
+
+#summary #list{
+	top:25px;
+	float: none;
+	position:relative;
+}
+div.line{
+	float: none;
+}
+div.item {
+	width: 250px;
+	float: left;
+}
+span{
+color: red;
+}
+</style>
+</html>

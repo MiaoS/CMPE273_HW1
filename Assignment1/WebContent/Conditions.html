@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Rock, Paper, Scissors</title>
+</head>
+<body>
+<h6>Let's play the rock, paper, scissors game!</h6>
+<p>Please select your option</p>
+<p class = "alert" id = 'alert'><p>
+<form>
+
+<button type ='button' value = "Play" onclick = 'Play()'>play</button>
+</form>
+<h6 id='result'></h6>
+</body>
+<script>
+function Play(){
+	//check if the user select any option
+	if(  ==undefined)
+	{
+		document.getElementById('alert').innerHTML = "Please select one option";
+	}
+	else
+	{
+		
+		document.getElementById('alert').innerHTML = "";
+		//call computerOption function to get computer option
+		var cOption = computerOption();
+		var uOption = ///////////
+		var result = document.getElementById('result');
+		if(cOption == uOption)
+			result.innerHTML = "Tied.";
+		else if ((uOption =='scissors'&&cOption = 'paper')
+				||(uOption =='paper'&&cOption = 'rock')
+				||(uOption =='rock'&&cOption = 'scissors'))
+				result.innerHTML = "You win!!";
+		else
+		{
+			result.innerHTML = "You Lose.";
+	}
+}
+
+//function to generate computer option
+function computerOption(){
+	var option_number = Math.floor(Math.random*3);//computer randomly generate 0,1,or 2
+	switch(option_number){
+		case 0:
+			return "rock";
+		case 1:
+			return "paper";
+		case 2:
+			return "scissors";
+	}
+}
+</script>
+</html>

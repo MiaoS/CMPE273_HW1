@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Lily's Dressing Room</title>
+</head>
+<body>
+<script>
+
+ var Lily = {
+		 Name: "Lily",
+ 		 Genger: "Female",
+ 		 Response: {
+ 				cold: "I need a fur jackey.",
+ 				warm: "I need a fan.",
+ 				burning: "I am dying.",
+ 				freezing: "I am dying."
+ 		}
+ };
+ 
+ document.write("<p id='intro'>Hello, I am "+ Lily.Name+". How is weather like today?</p>");
+</script>
+Your response: 
+	<div class = "temperature" onclick = "act()">
+		<input type ="radio" name="opt" value = "freezing" >Freezing<br>
+		<input type ="radio" name="opt" value = "cold">Cold<br>
+		<input type ="radio" name="opt" value = "warm">Warm<br>
+		<input type ="radio" name="opt" value = "burning">Burning<br>
+	</div>
+<br>
+	
+<script>
+function act(){
+ 	var tempOpts = document.getElementsByName("opt");
+ 	var temopt;
+ 	for(var i =0; i< tempOpts.length; i++){
+ 		if(tempOpts[i].checked)
+ 			temopt=tempOpts[i].value;
+ 	}
+	document.write(Lily.Name + "'s response: " + Lily.Response[temopt]);
+}
+</script>
+</body>
+</html>

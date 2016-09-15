@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Variables Questions</title>
+</head>
+<body>
+<form>
+<p id='Q1'>What is your name?</p>
+<input name='yourName' type='text'>
+<p id='Q2'>What's your birthday?</p>
+Date:<input type="date" name="DOB"><br>
+<input type="button" name="submit" value="Confirm"
+ onclick = "getResponse()">
+</form>
+<p id='response'></p>
+</body>
+<script>
+function getResponse(){
+	var yourName = document.getElementsByName("yourName")[0].value;
+	var yourDOB =  new Date(document.getElementsByName("DOB")[0].value);
+	var yourAge;
+	var today = new Date();
+	//validated the date of birth
+	if(yourDOB <= today){
+		//check if user's birth month and date is before today's date.
+ 	if((yourDOB.getMonth() == today.getMonth()&&yourDOB.getDate()>today.getDate())
+			|| (yourDOB.getMonth()> today.getMonth()))
+		{
+		yourAge = today.getYear() - yourDOB.getYear()-1;
+		}
+	else
+		yourAge = today.getYear() - yourDOB.getYear();
+	document.getElementById("response").innerHTML="Hello, "+ yourName +". You are "+ yourAge +" years old.";
+	}
+	//alert user to input passed date for DOB
+	else
+		{
+		document.getElementById("response").innerHTML="Please enter a valid date before today.";
+		}
+}
+
+</script>
+</html>

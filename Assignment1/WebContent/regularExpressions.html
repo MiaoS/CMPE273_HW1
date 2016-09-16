@@ -2,9 +2,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Replace Words in a Paragraph</title>
 </head>
 <body>
+<h1>Here a paragraph:</h1>
+<p id = "para">I wrote this paragraph to show how regular express in JavaScript works. 
+<br>You can replace THIS with any word you put in the textbox below or click update button to change all 7-letter words to 7LETTER.</p>
+<br>
+The words you want to replace with THIS:<input type = 'text' name="replacement">
+<br>
+<button onclick = 'replaceTHIS()'>Replace THIS</button>
 
+<br><br>
+<button onclick = 'updateSeven()'>Update all 7-letter words</button>
+
+<script>
+var orginal = document.getElementById('para');
+
+function replaceTHIS(){
+	
+	var reWord = document.getElementsByName('replacement')[0].value;//get input value
+	orginal.innerHTML =orginal.innerHTML.replace(/THIS/,reWord);
+}
+
+function updateSeven(){
+	orginal.innerHTML = orginal.innerHTML.replace(/\s[A-z]{7}\s/g," 7LETTER ");
+}
+</script>
 </body>
 </html>

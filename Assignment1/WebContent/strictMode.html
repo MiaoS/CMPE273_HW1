@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h5>Try to assign some value to undeclared variable and output the value of this undeclared variable; if error happens, output error message.</h5>
+<h3 onclick = 'InStrict()'>Click this run function in strict mode:</h3>
+<p id ="strict"></p>
+<h3 onclick = 'InNonStrict()'>Click this run function in non-strict mode:</h3>
+<p id ="non-strict"></p>
+<script>
+var output1 = document.getElementById('strict');
+var output2 = document.getElementById('non-strict');
+
+function InStrict(){
+	"use strict"
+	
+	try{
+		variable = "undeclared variable value";
+		output1.innerHTML = "Value: "+variable;
+	}
+	catch(e){
+		output1.innerHTML ="Error message : "+e.message;
+	}
+
+}
+
+function InNonStrict(){
+	
+	try{
+		variable = "undeclared variable value";
+		output2.innerHTML = "Value: "+variable;
+	}
+	catch(e){
+		output2.innerHTML ="Error message : "+e.message;
+	}
+}
+</script>
+</body>
+</html>

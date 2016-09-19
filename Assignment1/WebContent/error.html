@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Typo Error</title>
+</head>
+<body>
+<h3>Try to using invalid method. If there is no errors, output this message again; otherwise output error message.</h3>
+ <p id = 'alert' style="color: red"></p>
+ <p id = 'alert1' style="color: blue"></p>
+ <script>
+  try {
+	  document.getElementById("alert").innerHTML = document.getElementByTag("h3").innerHTML;
+  }
+  catch (err){
+	  document.getElementById("alert").innerHTML ="Error caught: "+ err.message;
+  }
+  finally{
+	  document.getElementById("alert1").innerHTML +="<br> finish try to find an element which id is 'a'.";
+  }
+ </script>
+</body>
+</html>

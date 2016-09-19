@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Display the number of clicks you make on image</title>
+</head>
+<body>
+<p>Click Image</p>
+<div onClick = "updateClick()" id='img'>
+	<img src = "./resource/1.JPG" alt = "a clickable image" height= 100 width =100>
+</div>
+<p id = "alert"></p>
+<p id ='count'>You clicked image <span id = "number">0</span> times</p>
+
+<script>
+	var counts = document.getElementById("number");
+	try{
+		if(localStorage)
+		{
+			localStorage.counts = counts.innerHTML;
+		}
+		else
+			{
+			document.getElementById("alert").innerHTML = "The browser doesn't support localStorage function.";
+			}
+	}
+	catch (e){
+		document.getElementById("alert").innerHTML = "Error message:"+ e.message;
+	}
+	function updateClick(){
+		if(localStorage.counts <10){
+			if(localStorage.counts){
+				localStorage.counts = Number(localStorage.counts) + 1;
+			}
+		counts.innerHTML = String(localStorage.counts);
+	}
+		else{
+		document.getElementById("alert").innerHTML = "You click too many times.";
+	}
+	}
+	
+</script>
+</body>
+</html>

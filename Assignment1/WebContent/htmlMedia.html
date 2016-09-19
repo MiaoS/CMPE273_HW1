@@ -2,12 +2,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Checking the Supported Audio Types and Auto Play</title>
 </head>
 <body>
-<audio controls>
-  <source src="./resource/ONE OK ROCK (ワンオクロック) - カラス (乌鸦).mp3" type="audio/mpeg">
-  Your browser does not support the audio tag.
+<div id = "sdiv">
+<h1>Autoplay MP3 file when the browser supports audio/mpeg format: <br>
+<br></h1></div>
+<div style ="top: 1000px">
+<audio id = "song" controls>
+  <source src="./resource/ONE OK ROCK (ワンオクロック) - カラス (乌鸦).mp3" type="audio/mpeg" >
+ audio tag is not supported in this browser.
 </audio>
+</div>
+
+<p id="info">Check this browser support audio types: </p>
+<script>
+ var audioSec = document.getElementById('song');//document.createElement("audio");//;
+ 
+ document.getElementById('info').innerHTML += "mp3: "+audioSec.canPlayType("audio/mpeg");
+ document.getElementById('info').innerHTML += "<br> wav: "+audioSec.canPlayType("audio/wav");
+ document.getElementById('info').innerHTML += "<br> ogg: "+audioSec.canPlayType("audio/ogg");
+ if(audioSec.canPlayType("audio/mpeg") =="maybe" ||audioSec.canPlayType("audio/mpeg")=="probably")
+		 {
+	 	
+	 	audioSec.autoplay = true;;// = true;
+	 	audioSec.controls = true;
+	 	document.body.insertBefore(audioSec, document.getElementById('info'));
+	 	//document.body.insertBefore(document.getElementById('sdiv'), audioSec);
+	 	//document.getElementById('sdiv').style="display: block";
+
+	 	audioSec.play();
+		 }
+</script>
 </body>
 </html>
